@@ -1,0 +1,169 @@
+
+
+			
+								CLASSE OBJECT 
+									   |
+									   |
+	JAVA.LANG, JAVA.UTIL, JAVA.IO <<------->> CONTA, FUNCIONARIOS, CLIENTES
+												|		   |	
+						  CONTA CORRENTE  <<----|		   |		
+												|		   |	
+						  CONTA POUPANCA  <<-----		   -->> GERENTE,
+						  										SUPERVISOR,
+						  										PROGRAMADOR
+						  										
+						  		
+						  		
+						  										
+	
+		System.out.println(contas[0].getTitular().getNome());		
+							 |    |      |           |
+		           ARRAY <<--     |      |           -->> NOME
+		                          |      |					atributo do cliente 
+		                 CONTA <<--      -->> TITULAR
+		             (indice do array)     (atributo de referencia 
+		             					    CLIENTE DA CLASSE CONTA)    
+		             					    
+		             					    
+		             			
+		             			
+		             					    
+		             					
+		             				JAVA.UTIL.COLLECTIONS 
+		             					<<interface>>
+		             					      |
+		             					      |	
+								  ---------------------------------------
+								  |				             			|		    
+		      				JAVA.UTIL.LIST								|
+		      		(lista aceita objetos duplicados)					|			|
+								  |										|
+								  |										|
+			----------------------------------------------				|
+			|					  |						 |				|	
+	JAVA.UTIL.ARRAY LIST	JAVA.UTIL.LINKEDLIST	JAVA.UTIL.VECTOR	|
+																		|
+																		|
+																		|
+	sets (conjuntos náo aceitam objetos duplicados} <<----------- JAVA.UTIL.SET	
+																  <<interface>>
+																  		|
+																JAVA.UTIL.HASHSET
+																
+								
+								
+																
+																
+		TIPO PRIMITIVO						WRAPPER
+  	(int, boolean, double, etc)		(cria uma referencia para o tipo primitivo)
+		
+					Autoboxing
+		 double ----------------->>>> JAVA.LANG.DOUBLE
+			int ----------------->>>> JAVA.LANG.INTEGER	
+		  float	----------------->>>> JAVA.LANG.FLOAT
+		   long ----------------->>>> JAVA.LANG.LONG
+		  short ----------------->>>> JAVA.LANG.SHORT
+		   byte ----------------->>>> JAVA.LANG.BYTE
+		   char ----------------->>>> JAVA.LANG.CHARACTER
+		boolean ----------------->>>> JAVA.LANG.BOOLEAN   	
+				<<<<-----------------													
+						Unboxing	
+											
+		Um Wrapper "embrulha" um tipo primitivo, ou seja, o converte
+		em uma referencia de classe (ocorre automaticamente por baixo dos panos)
+		
+		
+		
+		
+					
+						CLASSE NUMBERS
+		
+							|--> JAVA.LANG.DOUBLE
+							|--> JAVA.LANG.FLOAT
+	  JAVA.LANG.NUMBERS -->>|--> JAVA.LANG.LONG													
+							|--> JAVA.LANG.SHORT
+							|--> JAVA.LANG.INTEGER
+							|--> JAVA.LANG.BYTE	
+							
+							
+							
+							
+							
+						FUNCAO ANONIMA
+						
+						
+						              CRIA UM OBJETO DA INTERFACE COMPARATOR COM CONTA
+			METODO SORT <<-----		  PASSADO NOS GENERICS E CHAMANDO O CONSTRUTOR PADRAO
+							   |			|		
+	ARRAYLIST	<<----	lista.sort(new Comparator<Conta>() {
+        	
+ 				       	@Override
+        				public int compare(Conta c1, Conta c2) {
+        					return c1.getNumero() - c2.getNumero();
+        				} 					|
+        			});						|
+        			 |					NO CORPO DO METODO EXECUTA A FUNCAO E RETORNA 
+        			 |					O VALOR
+        OBS - TODA A CRIACAO DO OBJETO 
+        E IMPLENTACAO DO METODO É O 
+        PARAMETRO DO METODO SORT DO
+        ARRAYLIST (TODA IMPLENTACAO
+        ENTRE OS PARENTESES DE SORT)
+        
+        
+        
+        
+        							LAMBDAS (->)
+        				
+      
+      METODO RECEBE OS PARAMETROS		 ---->> UMA ESPECIE DE ARROW FUNCTION
+        			         |           |		CRIA O COMPARATOR E EXECUTA A FUNCAO
+        lista.sort( (Conta c1, Conta c2) -> {
+        	return c1.getNumero() - c2.getNumero();
+        });
+         |
+         ------->>> TODA A IMPLEMENTAÇÃO DO COMPARATOR É PARAMETRO DO METODO SORT
+         
+       
+         
+         
+         SE PODE TAMBEM CRIAR PRIMEIRO O COMPARATOR QUE RECEBE A CLASSE ANONIMA
+         		|
+         		|
+        Comparator<Conta> comp = ( (Conta c1, Conta c2) -> {
+        		String nome1 = c1.getTitular().getNome();
+        		String nome2 = c2.getTitular().getNome();
+        		
+        		return nome1.compareTo(nome2); 		
+        });
+        
+        lista.sort(comp);
+        			|
+        			---->> E DEPOIS PASSAR O COMPARATOR PARA O METODO SORT
+        			
+        			
+        			
+        			
+        SE PODE AINDA TORNAR O CODIGO AINDA MAIS ENXUTO SEM PRECISAR
+        PASSAR OS TIPOS DAS REFERENCIAS JA QUE A LISTA JA SABE QUE SAO CONTAS
+        
+        lista.sort( (c1, c2) -> c1.getNumero() - c2.getNumero());
+        
+        
+
+        
+        E AINDA PODEMOS USAR O METODO FOREACH PRA ITERAR A LISTA
+        
+        lista.forEach(new Consumer<Conta>() {
+//
+//			@Override
+//			public void accept(Conta c) {
+//				System.out.println(c.getTitular().getNome());
+//			}
+//        });
+
+
+		OU DE FORMA SIMPLIFICADA
+		
+        lista.forEach( (c) -> System.out.println(c.getTitular().getNome()));
+		

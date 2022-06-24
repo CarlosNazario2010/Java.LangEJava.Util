@@ -1,0 +1,81 @@
+
+
+	Internamente ao inicializar o metodo main de alguma classe, o java ja importa automaticamente
+o package java.lang (cujas classes String, System e Exception, por exemplo, fazem parte)
+
+	OS FQN DAS CLASSES SERIAM >>>
+		java.lang.String
+		java.lang.System
+		java.lang.Exception
+		
+		
+			CLASSE 	<<--- String nome = "Carlos"; --->> OBJETO (nao necessita a palavra new
+								   |							para cria-;o)
+		      REFERENCIA  <<--------	
+		    
+		      
+		 TAMBEM FUNCIONA EMBORA CONSIDERADO MA PRATICA -->>	String nome = new String("Carlos");
+		 
+		 
+		 UM METODO PRIMITIVO COMO int TAMBEM FUNCIONA DA MESMA FORMA     
+		 
+		 		int a = 5;
+		 		
+		 
+		 MAS COMO INT É UM METODO PRIMITIVO E STRING É UMA CLASSE, ESTE ULTIMA APONTA PARA
+		 ATRIBUTOS, METODOS, COMPOSICOES, ETC
+		 
+		 -->> objetos String sao imutaveis e sempre devemos
+	     	  instanciar uma nova referencia para apontar modificacoes
+		
+					// metodo toUpperCase converte todos os caracteres para maiusculo
+				String nomeMaiusculo = nome.toUpperCase();
+				System.out.println(nomeMaiusculo);
+		 		
+		 		
+		 	
+		 	PACKAGE == java.lang
+		 		     
+				CLASSE, PUBLIC <<-- System.out.println();
+		    								|	|
+   ATRIBUTO, PUBLIC, STATIC, REFERENCIA <<---	--->> METODO, PUBLIC, NAO STATIC, 
+   													  SOBRECARGA(VARIAS VERSOES DO METODO),
+   													  NAO LANCA EXESSOES CHECKED
+   													  
+   													  
+   													  
+   	TODA CLASSE DO JAVA HERDA ATRIBUTOS E METODOS DA SUPERCLASSE OBJECT
+   	PASSANDO OBJECT COMO REFERENCIA PARA OS OBJETOS, DEVIDO AO POLIMORFISMO,
+   	PODEMOS PASSAR PARAMETROS DO TIPO OBJECT PARA TODOS OS METODOS
+   	
+   	A CLASSE:
+   		public abstract class Conta {
+   			...
+   		}
+	
+	NA VERDADE, POR DEBAIXO DOS PANOS O JAVA INTERPRETA COMO:
+		public abstract class Conta extends Object { 
+			...
+		}
+		
+	DESSA FORMA PODEMOS REFERENCIAR UMA CONTA CORRENTE:
+	
+	|	ContaCorrente contaCorrente = new ContaCorrente(123, 456);
+	|	Conta contaCorrente = new ContaCorrente(123, 456);
+	|	Object contaCorrente = new ContaCorrente(123, 456);
+	|	
+	---->>> REFERENCIA CADA VEZ MAIS GENERICA
+	
+	OBS - MAS UMA CLASSE MAIS ALTA NA HIERARQUIA PROVAVELMENTE NAO VAI
+		POSSUIR OS METODOS QUE NOS IMPLEMENTAMOS. ENTAO UMA CONTA CORRENTE
+		DO TIPO OBJECT NAO VAI POSSUIR O METODO DEPOSITA, POR EXEMPLO
+		
+		
+	METODO toString DA CLASSE OBJECT PERMITE SOBRESCREVER A SAIDA DO OBJETO 
+	NO TERMINAL. SEMELHANTE AO DUNDER METHOD DO PYTHON __str__
+	
+	
+		      
+		     
+		 
+		 

@@ -1,0 +1,23 @@
+
+
+
+	Um projeto pode ser compactado em um jar (Java ARchive - uma especie de arquivo zip) 
+para ser importado por outro desenvolvedor. Em geral se compacta os arquivos .class 
+(ja compactados) e os packages do projeto.
+	
+	O arquivo jar é entao colocado no projeto onde a biblioteca sera usada e realizar
+o build path o seu build path. Dessa forma é só importar as classes as serem utilizadas
+no projeto.
+
+	Ao carregar para dentro do projeto o jar-executavel, e criar o path para as 
+Referenced Libraries, se pode observa que, o arquivo MANIFEST.MF informa o a classe com
+o metodo main de entry point do projeto:
+
+SEM A CONFIGURACAO DE ARQUIVO EXECUTAVEL (sem indicar o entry point):
+	Manifest-Version: 1.0
+
+COM A CONFIGURACAO DE ARQUIVO EXECUTAVEL (arquivo .jar pode ser executado):
+	Manifest-Version: 1.0
+	Main-Class: br.com.dominioDaEmpresa.nomeDoProjeto.testes.Teste
+
+	

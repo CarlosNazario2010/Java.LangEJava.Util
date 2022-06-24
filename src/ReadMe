@@ -1,0 +1,9 @@
+
+
+	Atraves do javadoc é possivel documentar toda o codigo e repassar junto com o projeto
+como um arquivo html. A sintaxe para preencher a documentacao é:
+
+/**  ...  */
+
+	Todas as classes, atributos e metodos publicos podem ser documentados para um outros
+desenvolvedor
